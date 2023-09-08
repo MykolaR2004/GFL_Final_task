@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dating table</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/dist/css/bootstrap.css}">
+</head>
+<body>
+<div class="container"><br><br>
+
+
+    <form method="get" action="archive">
+        <input type="submit" value="Archive" class="btn btn-sm btn-primary">
+    </form>
+    <form method="get" action="filtered_clients">
+        <input type="submit" value="Filter" class="btn btn-sm btn-primary">
+    </form>
+    <form method="get" action="index">
+        <input type="submit" value="Main page" class="btn btn-sm btn-primary">
+    </form>
+<table class="table table-sm table-striped table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>id</th>
+        <th>First</th>
+        <th>id</th>
+        <th>Second</th>
+        <th>Date and time</th>
+        <th>Delete</th>
+        <th>Archive</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="e : ${dates}">
+        <td th:text="${e.id}">
+        <td th:text="${e.firstPersonId}">
+        <td th:text="${e.firstPerson}">
+        <td th:text="${e.secondPersonId}">
+        <td th:text="${e.secondPerson}">
+        <td th:text="${e.time}">
+        <td>
+            <!--            <a th:href="@{/delete_artist(id=${a.id})}" class="btn btn-sm btn-outline-danger">Delete</a>-->
+            <a class="btn bt-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#myconfirm"
+               th:attr="data-bs-link=@{/delete_date(id=${e.id})}, data-bs-text=${e.firstPerson + ' and ' +e.secondPerson}, data-bs-id=${e.id}">
+                Delete</a>
+        </td>
+        <td>
+            <!--            <a th:href="@{/delete_artist(id=${a.id})}" class="btn btn-sm btn-outline-danger">Delete</a>-->
+            <a class="btn bt-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#myconfirm"
+                    th:attr="data-bs-link=@{/archive_date(id=${e.id})}, data-bs-text=${e.firstPerson + ' and ' +e.secondPerson}, data-bs-id=${e.id}">
+                Archive</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<form method="post" action="add_date">
+    <input type="number" name="first_person_id" class="text-input" placeholder="1 id" required>
+    <input type="number" name="second_person_id" class="text-input" placeholder="2 Id" required>
+    <input type="datetime-local" name="date" class="text-input" placeholder="name" required>
+    <input type="submit" value="Add new client" class="btn btn-sm btn-primary">
+</form>
+</div>
+
+<div class="modal fade" id="myconfirm" data-bs-backdrop="static" data-bs-keyboard="false"
+     tabindex="-1" aria-labelledby="staticWarningLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticWarningLabel">Warning</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete artist?<br/>
+                If you click delete, this action <i>cannot be undone</i>.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancel
+                </button>
+                <a class="btn btn-danger delete-button">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    let myConfirmModal = document.getElementById('myconfirm');
+    myConfirmModal.addEventListener('show.bs.modal', function (event) {
+        let button = event.relatedTarget;
+        let link = button.getAttribute('data-bs-link');
+        let tid = button.getAttribute('data-bs-id');
+        let text = button.getAttribute('data-bs-text');
+        let modalTitle = myConfirmModal.querySelector('.modal-title');
+        modalTitle.textContent = 'Deleting date: ' + text + ' (' + tid + ')'
+        let deleteButton = myConfirmModal.querySelector('.delete-button');
+        deleteButton.setAttribute("href", link)
+    })
+</script>
+<script th:src="@{webjars/jquery/3.7.0/dist/jquery.js}"></script>
+<script th:src="@{webjars/popperjs__core/2.11.8/dist/umd/popper.js}"></script>
+<script th:src="@{webjars/bootstrap/5.3.0/dist/js/bootstrap.bundle.js}"></script>
+</body>
+
+</html>

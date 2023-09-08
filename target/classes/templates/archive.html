@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Archived pairs</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/dist/css/bootstrap.css}">
+</head>
+<body>
+<div class="container"><br><br>
+    <form method="get" action="dating_table">
+        <input type="submit" value="Dates" class="btn btn-sm btn-primary">
+    </form>
+
+    <form method="get" action="filtered_clients">
+        <input type="submit" value="Filter" class="btn btn-sm btn-primary">
+    </form>
+    <form method="get" action="index">
+        <input type="submit" value="Main page" class="btn btn-sm btn-primary">
+    </form>
+<table class="table table-sm table-striped table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Pairs</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="e : ${archivedPairs}">
+        <td th:text="${e.id}">
+        <td th:text="${e.pair}">
+
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
