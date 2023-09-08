@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Сен 08 2023 г., 13:29
+-- Время создания: Сен 08 2023 г., 15:52
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -63,20 +63,20 @@ CREATE TABLE `dating_agency` (
 
 INSERT INTO `dating_agency` (`registration_number`, `name`, `surname`, `about_yourself`, `partner_requirements`, `sex`) VALUES
 (1, 'Jane', 'Wilson', 'Clever', 'Curious', 'female'),
-(2, 'James', 'Smith', '', '', 'male'),
-(3, 'Emily', 'Brown', NULL, NULL, 'female'),
-(4, 'Joel', 'Davis', NULL, NULL, 'male'),
-(5, 'Emily', 'Evans', NULL, NULL, 'female'),
+(2, 'James', 'Smith', 'Pretty', 'Clever, Talkative', 'male'),
+(3, 'Emily', 'Brown', 'Pretty', 'Curious', 'female'),
+(4, 'Joel', 'Davis', 'Patient, Reliable', 'Creative, Charismatic', 'male'),
+(5, 'Emily', 'Evans', 'Curious, Humorous', 'Talkative, Energetic', 'female'),
 (6, 'Ava', 'Walsh', 'Pretty', 'Clever, Talkative, Curious', 'female'),
-(7, 'George', 'O\'Brien', NULL, NULL, 'male'),
-(8, 'Abigail', 'Anderson', NULL, NULL, 'female'),
-(9, 'Ethan', 'Taylor', NULL, NULL, 'male'),
-(10, 'Emma', 'Singh', NULL, NULL, 'female'),
-(11, 'Oliver', 'Jones', NULL, NULL, 'male'),
-(12, 'Joseph', 'Garcia', NULL, NULL, 'male'),
-(13, 'Jessica', 'Gelbero', NULL, NULL, 'female'),
+(7, 'George', 'O\'Brien', 'Enthusiastic', 'Humorous, Talkative', 'male'),
+(8, 'Abigail', 'Anderson', 'Caring', 'Clever', 'female'),
+(9, 'Ethan', 'Taylor', 'Patient, Reliable', 'Clever, Talkative', 'male'),
+(10, 'Emma', 'Singh', 'Curious, Clever', 'Caring', 'female'),
+(11, 'Oliver', 'Jones', 'Curious, Talkative', 'Humorous', 'male'),
+(12, 'Joseph', 'Garcia', 'Pretty, Caring', 'Talkative', 'male'),
+(13, 'Jessica', 'Gelbero', 'Clever, Caring', 'Curious, Energetic', 'female'),
 (14, 'Michelle', 'Byrne', 'Curious, Clever', 'Clever, Talkative', 'female'),
-(15, 'Amelia', 'Williams', NULL, NULL, 'female'),
+(15, 'Amelia', 'Williams', 'Ambitious, Enthusiastic', 'Curious, Talkative', 'female'),
 (16, 'Michelle', 'Garcia', 'Funny', 'Clever', 'male'),
 (18, 'Ethan', 'Brown', 'Clever', 'Clever, Talkative', 'male'),
 (19, 'Jessica', 'Brown', 'Clever', 'Funny', 'female'),
@@ -102,11 +102,11 @@ CREATE TABLE `dating_table` (
 --
 
 INSERT INTO `dating_table` (`id`, `first_person_id`, `first_person`, `second_person_id`, `second_person`, `time`) VALUES
-(1, 0, 'Abigail Anderson', 0, 'Ethan Taylor', '2023-09-06 00:00:00'),
 (7, 4, 'Joel Davis', 10, 'Emma Singh', '2020-09-06 00:00:00'),
 (8, 2, 'James Smith', 9, 'Ethan Taylor', '2020-09-06 00:00:00'),
 (9, 1, 'Jane Wilson', 2, 'James Smith', '2020-09-06 00:00:00'),
-(10, 11, 'Oliver Jones', 12, 'Joseph Garcia', '2022-09-07 00:00:00');
+(10, 11, 'Oliver Jones', 12, 'Joseph Garcia', '2022-09-07 00:00:00'),
+(13, 1, 'Jane Wilson', 10, 'Emma Singh', '2023-09-08 16:54:00');
 
 --
 -- Индексы сохранённых таблиц
@@ -150,7 +150,7 @@ ALTER TABLE `dating_agency`
 -- AUTO_INCREMENT для таблицы `dating_table`
 --
 ALTER TABLE `dating_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
